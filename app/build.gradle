@@ -118,4 +118,12 @@ dependencies {
 
     //pager-indicator
     implementation "com.google.accompanist:accompanist-pager-indicators:0.18.0"
+
+    // Interceptor Logger
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }

@@ -1,4 +1,4 @@
-package com.brighterbee.tech.freetoplay.ui.theme
+package com.brighterbee.tech.freetoplay.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.graphics.Color
