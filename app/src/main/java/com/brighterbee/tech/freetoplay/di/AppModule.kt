@@ -5,6 +5,8 @@ import com.brighterbee.tech.freetoplay.common.Constants.CONNECTION_TIMEOUT
 import com.brighterbee.tech.freetoplay.common.Constants.READ_TIMEOUT
 import com.brighterbee.tech.freetoplay.common.Constants.WRITE_TIMEOUT
 import com.brighterbee.tech.freetoplay.data.remote.FreeToGameApi
+import com.brighterbee.tech.freetoplay.data.repository.GameRepositoryImpl
+import com.brighterbee.tech.freetoplay.domain.repository.GameRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,4 +53,9 @@ object AppModule {
             .create(FreeToGameApi::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideGameRepository(freeToGameApi: FreeToGameApi): GameRepository{
+        return GameRepositoryImpl(freeToGameApi)
+    }
 }
