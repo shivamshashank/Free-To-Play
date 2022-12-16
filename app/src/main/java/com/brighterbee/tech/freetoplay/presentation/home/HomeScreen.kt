@@ -1,4 +1,4 @@
-package com.brighterbee.tech.freetoplay.presentation.all_games
+package com.brighterbee.tech.freetoplay.presentation.home
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -17,16 +17,16 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.brighterbee.tech.freetoplay.R
 import com.brighterbee.tech.freetoplay.domain.model.Game
-import com.brighterbee.tech.freetoplay.presentation.all_games.components.GameCard
 import com.brighterbee.tech.freetoplay.presentation.components.CarouselView
 import com.brighterbee.tech.freetoplay.presentation.components.ErrorScreen
+import com.brighterbee.tech.freetoplay.presentation.home.components.GameCard
 import kotlinx.coroutines.launch
 
 @Composable
-fun AllGamesScreen(
+fun HomeScreen(
     scaffoldState: ScaffoldState,
     navController: NavController,
-    viewModel: AllGamesViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
     val scope = rememberCoroutineScope()
 
@@ -107,5 +107,4 @@ fun AllGamesScreen(
             }
         }
     }
-
 }

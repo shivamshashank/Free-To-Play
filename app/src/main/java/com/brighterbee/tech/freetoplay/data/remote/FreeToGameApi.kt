@@ -6,13 +6,18 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface FreeToGameApi {
+    @GET("games")
+    suspend fun getGamesByPlatform(
+        @Query("platform") platform: String,
+    ): List<GameDTO>
 
     @GET("games")
-    suspend fun getAllGames(): List<GameDTO>
+    suspend fun sortGames(
+        @Query("sort-by") sortBy: String,
+    ): List<GameDTO>
 
     @GET("game")
     suspend fun getSingleGames(
         @Query("id") id: Int,
     ): GameDetailsDTO?
-
 }

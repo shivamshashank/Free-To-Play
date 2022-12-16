@@ -9,7 +9,10 @@ import javax.inject.Inject
 class GameRepositoryImpl @Inject constructor(
     private val freeToGameApi: FreeToGameApi,
 ) : GameRepository {
-    override suspend fun getAllGames(): List<GameDTO> = freeToGameApi.getAllGames()
-
     override suspend fun getSingleGame(id: Int): GameDetailsDTO? = freeToGameApi.getSingleGames(id)
+
+    override suspend fun getGamesByPlatform(platform: String): List<GameDTO> =
+        freeToGameApi.getGamesByPlatform(platform)
+
+    override suspend fun sortGames(sortBy: String): List<GameDTO> = freeToGameApi.sortGames(sortBy)
 }

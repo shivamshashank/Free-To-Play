@@ -14,19 +14,19 @@ class GetSingleGameUseCase @Inject constructor(
 ) {
     operator fun invoke(id: Int): Flow<Resource<GameDetails>> = flow {
         try {
-            emit(Resource.Loading<GameDetails>())
+            emit(Resource.Loading())
             val getSingleGameDetailsDTO = gameRepository.getSingleGame(id)
 
             if (getSingleGameDetailsDTO == null) {
-                emit(Resource.Error<GameDetails>("Game Details is Null"))
+                emit(Resource.Error("Game Details is Null"))
             } else {
                 val getSingleGameDetails = getSingleGameDetailsDTO.toGameDetails()
-                emit(Resource.Success<GameDetails>(getSingleGameDetails))
+                emit(Resource.Success(getSingleGameDetails))
             }
         } catch (e: HttpException) {
-            emit(Resource.Error<GameDetails>(e.localizedMessage ?: "An unexpected error occurred!"))
+            emit(Resource.Error(e.localizedMessage ?: "An unexpected error occurred!"))
         } catch (e: IOException) {
-            emit(Resource.Error<GameDetails>("You are offline!"))
+            emit(Resource.Error("You are offline!"))
         }
     }
 }

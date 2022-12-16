@@ -9,14 +9,14 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class GetAllGamesUseCase @Inject constructor(
+class SortGamesUseCase @Inject constructor(
     private val gameRepository: GameRepository,
 ) {
 
-    operator fun invoke(): Flow<Resource<List<Game>>> = flow {
+    operator fun invoke(sortBy: String): Flow<Resource<List<Game>>> = flow {
         try {
             emit(Resource.Loading<List<Game>>())
-            val getAllGamesList = gameRepository.getAllGames().map { it.toGame() }
+            val getAllGamesList = gameRepository.sortGames(sortBy).map { it.toGame() }
             emit(Resource.Success<List<Game>>(getAllGamesList))
         } catch (e: HttpException) {
             emit(Resource.Error<List<Game>>(e.localizedMessage ?: "An unexpected error occurred!"))
